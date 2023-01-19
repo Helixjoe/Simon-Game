@@ -6,6 +6,17 @@ function nextSequence() {
   return randomNumber;
 }
 
-var randomChosenColour = buttonColours[nextSequence];
+var randomChosenColour = "." + buttonColours[nextSequence()];
 
 gamePattern.push(randomChosenColour);
+
+var Button = document.querySelector(randomChosenColour);
+
+function ButtonAnimation(Button) {
+  Button.classList.add("pressed");
+  setTimeout(function () {
+    Button.classList.remove("pressed");
+  }, 3000);
+}
+
+ButtonAnimation(Button);
