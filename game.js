@@ -1,6 +1,7 @@
 var userClickedPattern = [];
 var buttonColours = ["red", "blue", "green", "yellow"];
 var gamePattern = [];
+var level = 0;
 
 function playSound(name) {
   var audio = new Audio("sounds/" + name + ".mp3");
@@ -20,7 +21,8 @@ function nextSequence() {
   var Button = document.querySelector(randomChosenColour);
   ButtonAnimation(Button);
   playSound(buttonColours[randomNumber]); //Audio
-  console.log(buttonColours[randomNumber]);
+  level++;
+  document.querySelector("#level-title").innerHTML = "Level " + level;
 }
 
 // Button Identifier
@@ -33,3 +35,13 @@ for (var i = 0; i < buttonColours.length; i++)
     var currentButton = document.querySelector("." + userChosenColour);
     ButtonAnimation(currentButton);
   });
+
+//Start the Game
+
+document.addEventListener("keydown", function (event) {
+  var Key = event.key;
+  if (Key === "a") {
+    document.querySelector("#level-title").innerHTML = "Level " + level;
+    nextSequence();
+  }
+});
