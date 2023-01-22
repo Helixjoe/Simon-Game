@@ -41,11 +41,15 @@ function startOver() {
 
 function checkAnswer(currentLevel, index) {
   if (userClickedPattern[index] === gamePattern[index]) {
-    console.log("right");
-    userClickIndex = -1;
-    userClickedPattern = [];
-    document.querySelector("#level-title").innerHTML = "Level " + currentLevel;
-    setTimeout(nextSequence, 1000);
+    if (userClickIndex === gamePattern.length - 1) {
+      console.log("right");
+      currentLevel++;
+      userClickIndex = -1;
+      userClickedPattern = [];
+      document.querySelector("#level-title").innerHTML =
+        "Level " + currentLevel;
+      setTimeout(nextSequence, 1000);
+    }
   } else {
     console.log("wrong");
     playSound("wrong");
@@ -81,10 +85,8 @@ for (let i = 0; i < buttonColours.length; i++)
     let userChosenColour = this.classList[1];
     userClickedPattern.push(userChosenColour);
     userClickIndex++;
-    if (userClickIndex === gamePattern.length - 1) {
-      checkAnswer(currentLevel, userClickIndex);
-      currentLevel++;
-    }
+    checkAnswer(currentLevel, userClickIndex);
+
     playSound(userChosenColour);
     let currentButton = document.querySelector("." + userChosenColour);
     ButtonAnimation(currentButton);
