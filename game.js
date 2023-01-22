@@ -30,6 +30,7 @@ function nextSequence() {
   let Button = document.querySelector("." + randomChosenColour);
   nextSequenceAnimation(Button);
   playSound(randomChosenColour); //Audio
+  currentLevel++;
   document.querySelector("#level-title").innerHTML = "Level " + currentLevel;
 }
 
@@ -43,7 +44,6 @@ function checkAnswer(currentLevel, index) {
   if (userClickedPattern[index] === gamePattern[index]) {
     if (userClickIndex === gamePattern.length - 1) {
       console.log("right");
-      currentLevel++;
       userClickIndex = -1;
       userClickedPattern = [];
       document.querySelector("#level-title").innerHTML =
