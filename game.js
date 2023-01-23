@@ -4,12 +4,12 @@ let gamePattern = [];
 let currentLevel = 0;
 let userClickIndex = -1;
 let gameOver = 0;
-
+//Plays the sound effects
 function playSound(name) {
   let audio = new Audio("sounds/" + name + ".mp3");
   audio.play();
 }
-
+//Animations
 function ButtonAnimation(Button) {
   Button.classList.add("pressed");
   setTimeout(function () {
@@ -20,9 +20,9 @@ function nextSequenceAnimation(Button) {
   Button.classList.add("next");
   setTimeout(function () {
     Button.classList.remove("next");
-  }, 200);
+  }, 250);
 }
-
+// Generates the next button sequence
 function nextSequence() {
   let randomNumber = Math.floor(Math.random() * 4);
   let randomChosenColour = buttonColours[randomNumber];
@@ -34,12 +34,13 @@ function nextSequence() {
   document.querySelector("#level-title").innerHTML = "Level " + currentLevel;
 }
 
+// Restarts the Game
 function startOver() {
   gamePattern = [];
   userClickIndex = -1;
-  currentLevel = 0;
+  currentLevel = -1;
 }
-
+//Check answer for each level
 function checkAnswer(currentLevel, index) {
   if (userClickedPattern[index] === gamePattern[index]) {
     if (userClickIndex === gamePattern.length - 1) {
@@ -78,8 +79,8 @@ if (currentLevel === 0) {
     }
   });
 }
-// Button Identifier
 
+// Button Identifier
 for (let i = 0; i < buttonColours.length; i++)
   document.querySelectorAll(".btn")[i].addEventListener("click", function () {
     let userChosenColour = this.classList[1];
