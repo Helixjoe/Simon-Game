@@ -1,6 +1,5 @@
 <h1>Simon Game</h1>
 <p> This game is built using HTML, CSS and JavaScript. I made this during my Udemy Web Development course.</p>
-![Screenshot](images/Demo.png)
 <h3>Instruction</h3>
 <ol>
 	<li>Press A key to start the game</li>
